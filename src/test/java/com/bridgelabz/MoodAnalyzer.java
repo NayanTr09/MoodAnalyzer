@@ -5,7 +5,6 @@ public class MoodAnalyzer {
 
     public MoodAnalyzer(String message){
         this.message = message;
-        analyseMood();
     }
 
     public static String getMessage() {
@@ -16,7 +15,7 @@ public class MoodAnalyzer {
         this.message = message;
     }
 
-    public static String analyseMood() {
+    public static String analyseMood() throws MoodAnalyzerException{
         try{
         if (message.contains("Sad")) {
             return "SAD";
@@ -26,7 +25,7 @@ public class MoodAnalyzer {
         return "Enter valid string";
     }
         catch (NullPointerException e){
-            return "HAPPY";
+            throw new MoodAnalyzerException("Entered Invalid Mood");
         }
     }
 }
